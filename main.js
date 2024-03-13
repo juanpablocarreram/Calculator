@@ -252,7 +252,7 @@ function negativeIdentifier (){
         
 }
 function changeDisplaySize(){
-    result = result.toFixed(4);
+    result = result.toFixed(6);
         lengthOfResult =String(result).length;
         if(lengthOfResult>7){
             calculatorDisplay.style.fontSize = "2rem";
@@ -275,12 +275,7 @@ function displayResult(){
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
-        if(String(concat1).charAt(0)=="-"){
-            identifySign="-";
-        }
-        else{
-            identifySign="+";
-        }
+        identifySign="+";
         resultConcat1=0;
         operation=undefined;
     }
@@ -297,12 +292,7 @@ function displayResult(){
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
-        if(String(concat1).charAt(0)=="-"){
-            identifySign="-";
-        }
-        else{
             identifySign="+";
-        }
         resultConcat1=0;
         operation=undefined;
     }
@@ -319,12 +309,7 @@ function displayResult(){
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
-        if(String(concat1).charAt(0)=="-"){
-            identifySign="-";
-        }
-        else{
-            identifySign="+";
-        }
+         identifySign="+";
         resultConcat1=0;
         operation=undefined;
     }
@@ -341,12 +326,7 @@ function displayResult(){
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
-        if(String(concat1).charAt(0)=="-"){
-            identifySign="-";
-        }
-        else{
-            identifySign="+";
-        }
+        identifySign="+";
         resultConcat1=0;
         operation=undefined;
     }
@@ -363,12 +343,7 @@ function displayResult(){
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
-        if(String(concat1).charAt(0)=="-"){
-            identifySign="-";
-        }
-        else{
-            identifySign="+";
-        }
+        identifySign="+";
         resultConcat1=0;
         operation=undefined;
     }
