@@ -19,7 +19,7 @@ const POINT = document.querySelector(".butt-point");
 const AC = document.querySelector(".butt-ac");
 let concat1="0";
 let concat2="0";
-let resultConcat1, resultConcat2;
+let resultConcat1="0";
 let minusOrPlus= document.querySelector(".minus");
 let operation = undefined;
 let calculatorDisplay = document.querySelector("p");
@@ -34,40 +34,114 @@ let eight = "8";
 let nine = "9";
 let zero = "0";
 let point = ".";
+let result="";
 
 
 function displaySymbolAddition(){
+    ADDITION.style.background= "grey";
+    SUBSTRACTION.style.background= "white";
+    MULTIPLICATION.style.background= "white";
+    DIVITION.style.background= "white";
+    MODULUS.style.background= "white";
     calculatorDisplay.textContent = "+";
     operation="+";
     minusOrPlus.textContent="";
-    resultConcat1=+(minusOrPlus.textContent + concat1)
+   if(resultConcat1==0)
+    {
+        resultConcat1=+(minusOrPlus.textContent + concat1);
+        concat1="0"
+    }
+    else{
+    concat1="0"
+    }
 }
 function displaySymbolSubstraction(){
+    SUBSTRACTION.style.background= "grey";
+    MULTIPLICATION.style.background= "white";
+    DIVITION.style.background= "white";
+    MODULUS.style.background= "white";
+    ADDITION.style.background= "white";
     calculatorDisplay.textContent = "-"; 
     operation="-"
     minusOrPlus.textContent="";
+    if(resultConcat1==0)
+    {
+        resultConcat1=+(minusOrPlus.textContent + concat1);
+        concat1="0"
+    }
+    else{
+    concat1="0"
+    }
    
 }
 function displaySymbolMultiplication(){
+    MULTIPLICATION.style.background= "grey";
+    DIVITION.style.background= "white";
+    MODULUS.style.background= "white";
+    ADDITION.style.background= "white";
+    SUBSTRACTION.style.background= "white";
     calculatorDisplay.textContent = "x"; 
     operation="*"
     minusOrPlus.textContent="";
+    if(resultConcat1==0)
+    {
+        resultConcat1=+(minusOrPlus.textContent + concat1);
+        concat1="0"
+    }
+    else{
+    concat1="0"
+    }
 }
 function displaySymbolDivition(){
+    DIVITION.style.background= "grey";
+    MODULUS.style.background= "WHITE";
+    ADDITION.style.background= "white";
+    SUBSTRACTION.style.background= "white";
+    MULTIPLICATION.style.background= "white";
     calculatorDisplay.textContent = "÷"; 
     operation="/"
     minusOrPlus.textContent="";
+    if(resultConcat1==0)
+    {
+        resultConcat1=+(minusOrPlus.textContent + concat1);
+        concat1="0"
+    }
+    else{
+    concat1="0"
+    }
 }
 function displaySymbolModulus(){
+    MODULUS.style.background= "grey";
+    ADDITION.style.background= "white";
+    SUBSTRACTION.style.background= "white";
+    MULTIPLICATION.style.background= "white";
+    DIVITION.style.background= "white";
     calculatorDisplay.textContent = "%"; 
     operation="%"
     minusOrPlus.textContent="";
+    if(resultConcat1==0)
+    {
+        resultConcat1=+(minusOrPlus.textContent + concat1);
+        concat1="0"
+    }
+    else{
+    concat1="0"
+    }
 }
 function restartCalculator(){
     calculatorDisplay.textContent=0;
     operation = undefined;
     concat1 = "0";
+    resultConcat1="0";
     minusOrPlus.textContent="";
+   restartColors();
+}
+function restartColors(){
+    SUBSTRACTION.style.background= "white";
+    MULTIPLICATION.style.background= "white";
+    DIVITION.style.background= "white";
+    MODULUS.style.background= "white";
+    ADDITION.style.background= "white";
 }
 function concatenateDigit0(){
     if(concat1=="0"){
@@ -187,6 +261,54 @@ function negativeIdentifier (){
    
         
 }
+function displayResult(){
+    if(operation==="+"){
+        result = resultConcat1 + +concat1;
+        calculatorDisplay.textContent= result;
+        restartColors();
+        concat1=result;
+        resultConcat1="0";
+        operation=undefined;
+    }
+    else if(operation==="-"){
+        result = resultConcat1 - +concat1;
+        calculatorDisplay.textContent= result;
+        restartColors();
+        concat1=result;
+        resultConcat1="0";
+        operation=undefined;
+    }
+    else if(operation==="*"){
+        result = resultConcat1 * +concat1;
+        calculatorDisplay.textContent= result;
+        restartColors();
+        concat1=result;
+        resultConcat1="0";
+        operation=undefined;
+    }
+    else if(operation==="/"){
+        result = resultConcat1 / +concat1;
+        calculatorDisplay.textContent= result;
+        restartColors();
+        concat1=result;
+        resultConcat1="0";
+        operation=undefined;
+    }
+    else if(operation==="%"){
+        result = resultConcat1 % +concat1;
+        calculatorDisplay.textContent= result;
+        restartColors();
+        concat1=result;
+        resultConcat1="0";
+        operation=undefined;
+    }
+    else{
+        calculatorDisplay.textContent= concat1;
+    }
+    
+ 
+    
+}
 ADDITION.addEventListener("click",displaySymbolAddition);
 SUBSTRACTION.addEventListener("click",displaySymbolSubstraction);
 MULTIPLICATION.addEventListener("click",displaySymbolMultiplication);
@@ -207,3 +329,4 @@ EIGHT.addEventListener("click",concatenateDigit8);
 NINE.addEventListener("click",concatenateDigit9);
 POINT.addEventListener("click",concatenateDigitPoint);
 SIGN.addEventListener("click", negativeIdentifier);
+EQUAL.addEventListener("click", displayResult)
