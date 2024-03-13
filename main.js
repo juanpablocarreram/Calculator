@@ -35,8 +35,18 @@ let nine = "9";
 let zero = "0";
 let point = ".";
 let result="";
+let lengthOfResult = 0;
 
-
+function saveFirstConcat(){
+    if(resultConcat1==0)
+    {
+        resultConcat1=+(minusOrPlus.textContent + concat1);
+        concat1="0"
+    }
+    else{
+    concat1="0"
+    }
+}
 function displaySymbolAddition(){
     ADDITION.style.background= "grey";
     SUBSTRACTION.style.background= "white";
@@ -46,14 +56,7 @@ function displaySymbolAddition(){
     calculatorDisplay.textContent = "+";
     operation="+";
     minusOrPlus.textContent="";
-   if(resultConcat1==0)
-    {
-        resultConcat1=+(minusOrPlus.textContent + concat1);
-        concat1="0"
-    }
-    else{
-    concat1="0"
-    }
+    saveFirstConcat();
 }
 function displaySymbolSubstraction(){
     SUBSTRACTION.style.background= "grey";
@@ -64,15 +67,7 @@ function displaySymbolSubstraction(){
     calculatorDisplay.textContent = "-"; 
     operation="-"
     minusOrPlus.textContent="";
-    if(resultConcat1==0)
-    {
-        resultConcat1=+(minusOrPlus.textContent + concat1);
-        concat1="0"
-    }
-    else{
-    concat1="0"
-    }
-   
+    saveFirstConcat();
 }
 function displaySymbolMultiplication(){
     MULTIPLICATION.style.background= "grey";
@@ -83,14 +78,7 @@ function displaySymbolMultiplication(){
     calculatorDisplay.textContent = "x"; 
     operation="*"
     minusOrPlus.textContent="";
-    if(resultConcat1==0)
-    {
-        resultConcat1=+(minusOrPlus.textContent + concat1);
-        concat1="0"
-    }
-    else{
-    concat1="0"
-    }
+    saveFirstConcat();
 }
 function displaySymbolDivition(){
     DIVITION.style.background= "grey";
@@ -101,14 +89,7 @@ function displaySymbolDivition(){
     calculatorDisplay.textContent = "÷"; 
     operation="/"
     minusOrPlus.textContent="";
-    if(resultConcat1==0)
-    {
-        resultConcat1=+(minusOrPlus.textContent + concat1);
-        concat1="0"
-    }
-    else{
-    concat1="0"
-    }
+    saveFirstConcat();
 }
 function displaySymbolModulus(){
     MODULUS.style.background= "grey";
@@ -119,15 +100,9 @@ function displaySymbolModulus(){
     calculatorDisplay.textContent = "%"; 
     operation="%"
     minusOrPlus.textContent="";
-    if(resultConcat1==0)
-    {
-        resultConcat1=+(minusOrPlus.textContent + concat1);
-        concat1="0"
-    }
-    else{
-    concat1="0"
-    }
+    saveFirstConcat();
 }
+
 function restartCalculator(){
     calculatorDisplay.textContent=0;
     operation = undefined;
@@ -136,6 +111,7 @@ function restartCalculator(){
     minusOrPlus.textContent="";
    restartColors();
 }
+
 function restartColors(){
     SUBSTRACTION.style.background= "white";
     MULTIPLICATION.style.background= "white";
@@ -261,9 +237,20 @@ function negativeIdentifier (){
    
         
 }
+function changeDisplaySize(){
+    result = result.toFixed(4);
+        lengthOfResult =String(result).length;
+        if(lengthOfResult>7){
+            calculatorDisplay.style.fontSize = "2rem";
+        }
+        else{
+            calculatorDisplay.style.fontSize = "4rem";
+        }
+}
 function displayResult(){
     if(operation==="+"){
         result = resultConcat1 + +concat1;
+        changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
@@ -272,6 +259,7 @@ function displayResult(){
     }
     else if(operation==="-"){
         result = resultConcat1 - +concat1;
+        changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
@@ -280,6 +268,7 @@ function displayResult(){
     }
     else if(operation==="*"){
         result = resultConcat1 * +concat1;
+       changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
@@ -288,6 +277,7 @@ function displayResult(){
     }
     else if(operation==="/"){
         result = resultConcat1 / +concat1;
+        changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
@@ -296,6 +286,7 @@ function displayResult(){
     }
     else if(operation==="%"){
         result = resultConcat1 % +concat1;
+        changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
         concat1=result;
