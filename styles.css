@@ -14,6 +14,11 @@ body{
     align-items:center;
     justify-content:center;
 }
+.minus{
+    display:inline-block;
+    font-size:4rem;
+    color:black;
+}
 .calculator{
     display:grid;
     grid-template:2fr 1fr 1fr 1fr 1fr 1fr /1fr 1fr 1fr 1fr;
@@ -52,6 +57,7 @@ body{
 p{
     font-size:4rem;
     margin-right:10px;
+    display:inline-block;
 }
 .numbers{
     display:flex;

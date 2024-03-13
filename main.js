@@ -17,8 +17,10 @@ const MODULUS = document.querySelector(".butt-modulus");
 const SIGN = document.querySelector(".butt-sign");
 const POINT = document.querySelector(".butt-point");
 const AC = document.querySelector(".butt-ac");
-let resultConcat1="0";
-let resultConcat2="0";
+let concat1="0";
+let concat2="0";
+let resultConcat1, resultConcat2;
+let minusOrPlus= document.querySelector(".minus");
 let operation = undefined;
 let calculatorDisplay = document.querySelector("p");
 let one = "1";
@@ -36,136 +38,154 @@ let point = ".";
 
 function displaySymbolAddition(){
     calculatorDisplay.textContent = "+";
-    operation="+"
+    operation="+";
+    minusOrPlus.textContent="";
+    resultConcat1=+(minusOrPlus.textContent + concat1)
 }
 function displaySymbolSubstraction(){
     calculatorDisplay.textContent = "-"; 
     operation="-"
+    minusOrPlus.textContent="";
+   
 }
 function displaySymbolMultiplication(){
     calculatorDisplay.textContent = "x"; 
     operation="*"
+    minusOrPlus.textContent="";
 }
 function displaySymbolDivition(){
     calculatorDisplay.textContent = "÷"; 
     operation="/"
+    minusOrPlus.textContent="";
 }
 function displaySymbolModulus(){
     calculatorDisplay.textContent = "%"; 
     operation="%"
+    minusOrPlus.textContent="";
 }
 function restartCalculator(){
     calculatorDisplay.textContent=0;
     operation = undefined;
-    resultConcat1 = 0;
+    concat1 = "0";
+    minusOrPlus.textContent="";
 }
 function concatenateDigit0(){
-    if(resultConcat1==="0"){
-        resultConcat1="0"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="0"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="0";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="0";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit1(){
-    if(resultConcat1==="0"){
-        resultConcat1="1"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="1"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="1";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="1";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit2(){
-    if(resultConcat1==="0"){
-        resultConcat1="2"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="2"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="2";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="2";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit3(){
-    if(resultConcat1==="0"){
-        resultConcat1="3"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="3"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="3";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="3";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit4(){
-    if(resultConcat1==="0"){
-        resultConcat1="4"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="4"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="4";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="4";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit5(){
-    if(resultConcat1==="0"){
-        resultConcat1="5"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="5"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="5";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="5";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit6(){
-    if(resultConcat1==="0"){
-        resultConcat1="6"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="6"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="6";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="6";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit7(){
-    if(resultConcat1==="0"){
-        resultConcat1="7"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="7"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="7";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="7";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit8(){
-    if(resultConcat1==="0"){
-        resultConcat1="8"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="8"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="8";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="8";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigit9(){
-    if(resultConcat1==="0"){
-        resultConcat1="9"
-        calculatorDisplay.textContent=resultConcat1;
+    if(concat1=="0"){
+        concat1="9"
+        calculatorDisplay.textContent=concat1;
     }
     else{
-        resultConcat1+="9";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+="9";
+        calculatorDisplay.textContent=concat1;
     }
 }
 function concatenateDigitPoint(){
-    if(resultConcat1.includes(".")){
+    if(concat1.includes(".")){
     }
     else{
-        resultConcat1+=".";
-        calculatorDisplay.textContent=resultConcat1;
+        concat1+=".";
+        calculatorDisplay.textContent=concat1;
     }
+}
+function negativeIdentifier (){
+    if(minusOrPlus.innerHTML===""){
+        minusOrPlus.textContent="-";
+    }
+    else{
+        minusOrPlus.textContent="";
+    }
+   
+        
 }
 ADDITION.addEventListener("click",displaySymbolAddition);
 SUBSTRACTION.addEventListener("click",displaySymbolSubstraction);
@@ -185,4 +205,5 @@ SIX.addEventListener("click",concatenateDigit6);
 SEVEN.addEventListener("click",concatenateDigit7);
 EIGHT.addEventListener("click",concatenateDigit8);
 NINE.addEventListener("click",concatenateDigit9);
-POINT.addEventListener("click",concatenateDigitPoint)
+POINT.addEventListener("click",concatenateDigitPoint);
+SIGN.addEventListener("click", negativeIdentifier);
