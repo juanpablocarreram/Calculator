@@ -36,6 +36,7 @@ let nine = "9";
 let zero = "0";
 let point = ".";
 let result="";
+let repeat="false";
 let lengthOfResult = 0;
 
 function saveFirstConcat(){
@@ -58,6 +59,7 @@ function saveFirstConcat(){
     identifySign="+";
 }
 function displaySymbolAddition(){
+    repeat=false;
     ADDITION.style.background= "grey";
     SUBSTRACTION.style.background= "white";
     MULTIPLICATION.style.background= "white";
@@ -70,6 +72,7 @@ function displaySymbolAddition(){
    
 }
 function displaySymbolSubstraction(){
+    repeat=false;
     SUBSTRACTION.style.background= "grey";
     MULTIPLICATION.style.background= "white";
     DIVITION.style.background= "white";
@@ -82,6 +85,7 @@ function displaySymbolSubstraction(){
     
 }
 function displaySymbolMultiplication(){
+    repeat=false;
     MULTIPLICATION.style.background= "grey";
     DIVITION.style.background= "white";
     MODULUS.style.background= "white";
@@ -93,6 +97,7 @@ function displaySymbolMultiplication(){
     saveFirstConcat();
 }
 function displaySymbolDivition(){
+    repeat=false;
     DIVITION.style.background= "grey";
     MODULUS.style.background= "WHITE";
     ADDITION.style.background= "white";
@@ -104,6 +109,7 @@ function displaySymbolDivition(){
     saveFirstConcat();
 }
 function displaySymbolModulus(){
+    repeat=false;
     MODULUS.style.background= "grey";
     ADDITION.style.background= "white";
     SUBSTRACTION.style.background= "white";
@@ -136,6 +142,8 @@ function concatenateDigit0(){
         concat1="0"
         calculatorDisplay.textContent=concat1;
     }
+    else if(repeat===true){
+    }
     else{
         concat1+="0";
         calculatorDisplay.textContent=concat1;
@@ -145,6 +153,8 @@ function concatenateDigit1(){
     if(concat1=="0"){
         concat1="1"
         calculatorDisplay.textContent=concat1;
+    }
+    else if(repeat===true){
     }
     else{
         concat1+="1";
@@ -156,6 +166,8 @@ function concatenateDigit2(){
         concat1="2"
         calculatorDisplay.textContent=concat1;
     }
+    else if(repeat===true){
+    }
     else{
         concat1+="2";
         calculatorDisplay.textContent=concat1;
@@ -165,6 +177,8 @@ function concatenateDigit3(){
     if(concat1=="0"){
         concat1="3"
         calculatorDisplay.textContent=concat1;
+    }
+    else if(repeat===true){
     }
     else{
         concat1+="3";
@@ -176,6 +190,8 @@ function concatenateDigit4(){
         concat1="4"
         calculatorDisplay.textContent=concat1;
     }
+    else if(repeat===true){
+    }
     else{
         concat1+="4";
         calculatorDisplay.textContent=concat1;
@@ -185,6 +201,8 @@ function concatenateDigit5(){
     if(concat1=="0"){
         concat1="5"
         calculatorDisplay.textContent=concat1;
+    }
+    else if(repeat===true){
     }
     else{
         concat1+="5";
@@ -196,6 +214,8 @@ function concatenateDigit6(){
         concat1="6"
         calculatorDisplay.textContent=concat1;
     }
+    else if(repeat===true){
+    }
     else{
         concat1+="6";
         calculatorDisplay.textContent=concat1;
@@ -205,6 +225,8 @@ function concatenateDigit7(){
     if(concat1=="0"){
         concat1="7"
         calculatorDisplay.textContent=concat1;
+    }
+    else if(repeat===true){
     }
     else{
         concat1+="7";
@@ -216,6 +238,8 @@ function concatenateDigit8(){
         concat1="8"
         calculatorDisplay.textContent=concat1;
     }
+    else if(repeat===true){
+    }
     else{
         concat1+="8";
         calculatorDisplay.textContent=concat1;
@@ -225,6 +249,8 @@ function concatenateDigit9(){
     if(concat1=="0"){
         concat1="9"
         calculatorDisplay.textContent=concat1;
+    }
+    else if(repeat===true){
     }
     else{
         concat1+="9";
@@ -351,7 +377,7 @@ function displayResult(){
         calculatorDisplay.textContent= concat1;
     }
     
- 
+ repeat=true;
     
 }
 ADDITION.addEventListener("click",displaySymbolAddition);
