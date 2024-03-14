@@ -17,11 +17,10 @@ const MODULUS = document.querySelector(".butt-modulus");
 const SIGN = document.querySelector(".butt-sign");
 const POINT = document.querySelector(".butt-point");
 const AC = document.querySelector(".butt-ac");
-let concat1="0";
+let currentNumber="0";
 let identifySign="+";
-let concat2="0";
-let resultConcat1="0";
-let minusOrPlus= document.querySelector(".minus");
+let resultFirstNumber="0";
+let signDisplay= document.querySelector(".minus");
 let operation = undefined;
 let calculatorDisplay = document.querySelector("p");
 let one = "1";
@@ -39,25 +38,27 @@ let result="";
 let repeat="false";
 let lengthOfResult = 0;
 
-function saveFirstConcat(){
-    if(resultConcat1==0)
+
+function saveFirstNumber(){
+    if(resultFirstNumber==0)
     {
         if(identifySign=="-"){
-            resultConcat1=Number(concat1)*-1;
+            resultFirstNumber=Number(currentNumber)*-1;
         }
         else if (identifySign=="+"){
-            resultConcat1=Number(concat1)*1;
+            resultFirstNumber=Number(currentNumber)*1;
         }
         else{
 
         }
-        concat1=0;
+        currentNumber=0;
     }
     else{
-    concat1=0;
+    currentNumber=0;
     }
     identifySign="+";
 }
+/* Show the user they are making adition and process the addition */
 function displaySymbolAddition(){
     repeat=false;
     ADDITION.style.background= "grey";
@@ -65,12 +66,13 @@ function displaySymbolAddition(){
     MULTIPLICATION.style.background= "white";
     DIVITION.style.background= "white";
     MODULUS.style.background= "white";
-    minusOrPlus.textContent="";
+    signDisplay.textContent="";
     calculatorDisplay.textContent = "+";
     operation="+";
-    saveFirstConcat();
+    saveFirstNumber();
    
 }
+/* Show the user they are making substraction and process the substraction */
 function displaySymbolSubstraction(){
     repeat=false;
     SUBSTRACTION.style.background= "grey";
@@ -78,12 +80,13 @@ function displaySymbolSubstraction(){
     DIVITION.style.background= "white";
     MODULUS.style.background= "white";
     ADDITION.style.background= "white";
-    minusOrPlus.textContent="";
+    signDisplay.textContent="";
     calculatorDisplay.textContent = "-"; 
     operation="-"
-    saveFirstConcat();
+    saveFirstNumber();
     
 }
+/* Show the user they are making adition and process the multiplication */
 function displaySymbolMultiplication(){
     repeat=false;
     MULTIPLICATION.style.background= "grey";
@@ -91,45 +94,47 @@ function displaySymbolMultiplication(){
     MODULUS.style.background= "white";
     ADDITION.style.background= "white";
     SUBSTRACTION.style.background= "white";
-    minusOrPlus.textContent="";
+    signDisplay.textContent="";
     calculatorDisplay.textContent = "x"; 
     operation="*"
-    saveFirstConcat();
+    saveFirstNumber();
 }
-function displaySymbolDivition(){
+/* Show the user they are making division and process the diviion */
+function displaySymbolDivision(){
     repeat=false;
     DIVITION.style.background= "grey";
     MODULUS.style.background= "WHITE";
     ADDITION.style.background= "white";
     SUBSTRACTION.style.background= "white";
     MULTIPLICATION.style.background= "white";
-    minusOrPlus.textContent="";
+    signDisplay.textContent="";
     calculatorDisplay.textContent = "÷"; 
     operation="/"
-    saveFirstConcat();
+    saveFirstNumber();
 }
 function displaySymbolModulus(){
-    repeat=false;
+    repeat=false;   
     MODULUS.style.background= "grey";
     ADDITION.style.background= "white";
     SUBSTRACTION.style.background= "white";
     MULTIPLICATION.style.background= "white";
     DIVITION.style.background= "white";
-    minusOrPlus.textContent="";
+    signDisplay.textContent="";
     calculatorDisplay.textContent = "%"; 
     operation="%"
-    saveFirstConcat();
+    saveFirstNumber();
 }
 
 function restartCalculator(){
+    repeat=false;
     calculatorDisplay.textContent=0;
     operation = undefined;
-    concat1 = "0";
-    resultConcat1="0";
-    minusOrPlus.textContent="";
+    currentNumber = "0";
+    resultFirstNumber="0";
+    signDisplay.textContent="";
    restartColors();
 }
-
+/* Displays the calculator in the original style state */
 function restartColors(){
     SUBSTRACTION.style.background= "white";
     MULTIPLICATION.style.background= "white";
@@ -138,145 +143,147 @@ function restartColors(){
     ADDITION.style.background= "white";
 }
 function concatenateDigit0(){
-    if(concat1=="0"){
-        concat1="0"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="0"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="0";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="0";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit1(){
-    if(concat1=="0"){
-        concat1="1"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="1"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="1";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="1";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit2(){
-    if(concat1=="0"){
-        concat1="2"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="2"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="2";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="2";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit3(){
-    if(concat1=="0"){
-        concat1="3"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="3"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="3";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="3";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit4(){
-    if(concat1=="0"){
-        concat1="4"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="4"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="4";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="4";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit5(){
-    if(concat1=="0"){
-        concat1="5"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="5"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="5";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="5";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit6(){
-    if(concat1=="0"){
-        concat1="6"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="6"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="6";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="6";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit7(){
-    if(concat1=="0"){
-        concat1="7"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="7"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="7";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="7";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit8(){
-    if(concat1=="0"){
-        concat1="8"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="8"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="8";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="8";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigit9(){
-    if(concat1=="0"){
-        concat1="9"
-        calculatorDisplay.textContent=concat1;
+    if(currentNumber=="0"){
+        currentNumber="9"
+        calculatorDisplay.textContent=currentNumber;
     }
     else if(repeat===true){
     }
     else{
-        concat1+="9";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+="9";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
 function concatenateDigitPoint(){
-    if(concat1.includes(".")){
+    if(currentNumber.includes(".")){
     }
     else{
-        concat1+=".";
-        calculatorDisplay.textContent=concat1;
+        currentNumber+=".";
+        calculatorDisplay.textContent=currentNumber;
     }
 }
+/* OutPuts in WebApp the actual sign of the expression */
 function negativeIdentifier (){
     if(identifySign=="+"){
-        minusOrPlus.innerHTML="-";
+        signDisplay.innerHTML="-";
         identifySign="-";
     }
     else{
-        minusOrPlus.innerHTML="";
+        signDisplay.innerHTML="";
         identifySign="+";
     }
    
         
 }
+/* It decreases the size as needed */
 function changeDisplaySize(){
     result = result.toFixed(6);
         lengthOfResult =String(result).length;
@@ -287,105 +294,114 @@ function changeDisplaySize(){
             calculatorDisplay.style.fontSize = "4rem";
         }
 }
+/* Displays the operation result */
 function displayResult(){
+    /* Makes the addition operation */
     if(operation==="+"){
        if(identifySign=="-"){
-        concat1=Number(concat1)*-1;
+        currentNumber=Number(currentNumber)*-1;
        }
        else{
-        concat1=1*Number(concat1);
+        currentNumber=1*Number(currentNumber);
        }
-       minusOrPlus.textContent="";
-       result=resultConcat1 + concat1;
+       signDisplay.textContent="";
+       result=resultFirstNumber + currentNumber;
         changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
-        concat1=result;
+        currentNumber=result;
         identifySign="+";
-        resultConcat1=0;
+        resultFirstNumber=0;
         operation=undefined;
     }
+    /* Makes the substraction operation */
     else if(operation==="-"){
         if(identifySign=="-"){
-            concat1=Number(concat1)*-1;
+            currentNumber=Number(currentNumber)*-1;
            }
            else{
-            concat1=1*Number(concat1);
+            currentNumber=1*Number(currentNumber);
            }
-           minusOrPlus.textContent="";
-           result=resultConcat1 - concat1;
+           signDisplay.textContent="";
+           result=resultFirstNumber - currentNumber;
         changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
-        concat1=result;
+        currentNumber=result;
             identifySign="+";
-        resultConcat1=0;
+        resultFirstNumber=0;
         operation=undefined;
     }
+    /* Makes the multiplication operation */
     else if(operation==="*"){
         if(identifySign=="-"){
-            concat1=Number(concat1)*-1;
+            currentNumber=Number(currentNumber)*-1;
            }
            else{
-            concat1=1*Number(concat1);
+            currentNumber=1*Number(currentNumber);
            }
-           minusOrPlus.textContent="";
-        result = resultConcat1 * concat1;
+           signDisplay.textContent="";
+        result = resultFirstNumber * currentNumber;
        changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
-        concat1=result;
+        currentNumber=result;
          identifySign="+";
-        resultConcat1=0;
+        resultFirstNumber=0;
         operation=undefined;
     }
+    /* Makes the division operation */
     else if(operation==="/"){
         if(identifySign=="-"){
-            concat1=Number(concat1)*-1;
+            currentNumber=Number(currentNumber)*-1;
            }
            else{
-            concat1=1*Number(concat1);
+            currentNumber=1*Number(currentNumber);
            }
-           minusOrPlus.textContent="";
-        result = resultConcat1 / concat1;
+           signDisplay.textContent="";
+        result = resultFirstNumber / currentNumber;
         changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
-        concat1=result;
+        currentNumber=result;
         identifySign="+";
-        resultConcat1=0;
+        resultFirstNumber=0;
         operation=undefined;
     }
+    /* Makes the modulus operation */
     else if(operation==="%"){
         if(identifySign=="-"){
-            concat1=Number(concat1)*-1;
+            currentNumber=Number(currentNumber)*-1;
            }
            else{
-            concat1=1*Number(concat1);
+            currentNumber=1*Number(currentNumber);
            }
-           minusOrPlus.textContent="";
-        result = resultConcat1 % concat1;
+           signDisplay.textContent="";
+        result = resultFirstNumber % currentNumber;
         changeDisplaySize();
         calculatorDisplay.textContent= result;
         restartColors();
-        concat1=result;
+        currentNumber=result;
         identifySign="+";
-        resultConcat1=0;
+        resultFirstNumber=0;
         operation=undefined;
     }
     else{
-        calculatorDisplay.textContent= concat1;
+        calculatorDisplay.textContent= currentNumber;
     }
     
  repeat=true;
     
 }
+/* Perform each button functionalities */
 ADDITION.addEventListener("click",displaySymbolAddition);
 SUBSTRACTION.addEventListener("click",displaySymbolSubstraction);
 MULTIPLICATION.addEventListener("click",displaySymbolMultiplication);
-DIVITION.addEventListener("click",displaySymbolDivition);
+DIVITION.addEventListener("click",displaySymbolDivision);
 MODULUS.addEventListener("click",displaySymbolModulus);
 AC.addEventListener("click", restartCalculator);
+SIGN.addEventListener("click", negativeIdentifier);
+EQUAL.addEventListener("click", displayResult);
 
 
 ZERO.addEventListener("click",concatenateDigit0);
@@ -399,5 +415,3 @@ SEVEN.addEventListener("click",concatenateDigit7);
 EIGHT.addEventListener("click",concatenateDigit8);
 NINE.addEventListener("click",concatenateDigit9);
 POINT.addEventListener("click",concatenateDigitPoint);
-SIGN.addEventListener("click", negativeIdentifier);
-EQUAL.addEventListener("click", displayResult)
